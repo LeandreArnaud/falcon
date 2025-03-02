@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint .",
     "test": "jest",
-    "start": "babel-node index.js"
+    "start": "babel-node src/index.js"
   },
   "dependencies": {
     "@babel/cli": "^7.24.1",

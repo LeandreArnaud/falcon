@@ -1,4 +1,4 @@
-import { Drug, Pharmacy } from "./pharmacy";
+import { Drug, Pharmacy } from "./classes/pharmacy";
 
 import fs from "fs";
 
@@ -18,7 +18,7 @@ for (let elapsedDays = 0; elapsedDays < 30; elapsedDays++) {
 
 /* eslint-disable no-console */
 fs.writeFile(
-  "output.json",
+  "src/outputs/output.json",
   JSON.stringify({ result: log }, null, 2).concat("\n"),
   (err) => {
     if (err) {
