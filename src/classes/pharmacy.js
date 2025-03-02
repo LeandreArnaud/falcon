@@ -24,16 +24,21 @@ export class Pharmacy {
   updateBenefit(drug) {
     if (drug.name === "Magic Pill") return;
 
-    if (drug.name === "Herbal Tea") {
-      this.increaseBenefit(drug);
-    } else if (drug.name === "Fervex") {
-      this.increaseBenefit(drug);
-      if (drug.expiresIn < 11) this.increaseBenefit(drug);
-      if (drug.expiresIn < 6) this.increaseBenefit(drug);
-    } else if (drug.name === "Dafalgan") {
-      this.decreaseBenefit(drug, 2);
-    } else {
-      this.decreaseBenefit(drug);
+    switch (drug.name) {
+      case "Herbal Tea":
+        this.increaseBenefit(drug);
+        break;
+      case "Fervex":
+        this.increaseBenefit(drug);
+        if (drug.expiresIn < 11) this.increaseBenefit(drug);
+        if (drug.expiresIn < 6) this.increaseBenefit(drug);
+        break;
+      case "Dafalgan":
+        this.decreaseBenefit(drug, 2);
+        break;
+      default:
+        this.decreaseBenefit(drug);
+        break;
     }
   }
 
@@ -46,14 +51,19 @@ export class Pharmacy {
   handleExpiredDrug(drug) {
     if (drug.expiresIn >= 0) return;
 
-    if (drug.name === "Herbal Tea") {
-      this.increaseBenefit(drug);
-    } else if (drug.name === "Fervex") {
-      drug.benefit = 0;
-    } else if (drug.name === "Dafalgan") {
-      this.decreaseBenefit(drug, 2);
-    } else if (drug.name !== "Magic Pill") {
-      this.decreaseBenefit(drug);
+    switch (drug.name) {
+      case "Herbal Tea":
+        this.increaseBenefit(drug);
+        break;
+      case "Fervex":
+        drug.benefit = 0;
+        break;
+      case "Dafalgan":
+        this.decreaseBenefit(drug, 2);
+        break;
+      default:
+        this.decreaseBenefit(drug);
+        break;
     }
   }
 
