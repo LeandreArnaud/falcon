@@ -25,15 +25,15 @@ export class Pharmacy {
     if (drug.name === "Magic Pill") return;
 
     if (drug.name === "Herbal Tea") {
-      this.increaseBenefit(drug, 1);
+      this.increaseBenefit(drug);
     } else if (drug.name === "Fervex") {
-      this.increaseBenefit(drug, 1);
-      if (drug.expiresIn < 11) this.increaseBenefit(drug, 1);
-      if (drug.expiresIn < 6) this.increaseBenefit(drug, 1);
+      this.increaseBenefit(drug);
+      if (drug.expiresIn < 11) this.increaseBenefit(drug);
+      if (drug.expiresIn < 6) this.increaseBenefit(drug);
     } else if (drug.name === "Dafalgan") {
       this.decreaseBenefit(drug, 2);
     } else {
-      this.decreaseBenefit(drug, 1);
+      this.decreaseBenefit(drug);
     }
   }
 
@@ -47,21 +47,21 @@ export class Pharmacy {
     if (drug.expiresIn >= 0) return;
 
     if (drug.name === "Herbal Tea") {
-      this.increaseBenefit(drug, 1);
+      this.increaseBenefit(drug);
     } else if (drug.name === "Fervex") {
       drug.benefit = 0;
     } else if (drug.name === "Dafalgan") {
       this.decreaseBenefit(drug, 2);
     } else if (drug.name !== "Magic Pill") {
-      this.decreaseBenefit(drug, 1);
+      this.decreaseBenefit(drug);
     }
   }
 
-  increaseBenefit(drug, value) {
+  increaseBenefit(drug, value = 1) {
     drug.benefit = Math.min(drug.benefit + value, 50);
   }
 
-  decreaseBenefit(drug, value) {
+  decreaseBenefit(drug, value = 1) {
     drug.benefit = Math.max(drug.benefit - value, 0);
   }
 }
