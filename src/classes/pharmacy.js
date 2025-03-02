@@ -30,6 +30,8 @@ export class Pharmacy {
       this.increaseBenefit(drug, 1);
       if (drug.expiresIn < 11) this.increaseBenefit(drug, 1);
       if (drug.expiresIn < 6) this.increaseBenefit(drug, 1);
+    } else if (drug.name === "Dafalgan") {
+      this.decreaseBenefit(drug, 2);
     } else {
       this.decreaseBenefit(drug, 1);
     }
@@ -48,6 +50,8 @@ export class Pharmacy {
       this.increaseBenefit(drug, 1);
     } else if (drug.name === "Fervex") {
       drug.benefit = 0;
+    } else if (drug.name === "Dafalgan") {
+      this.decreaseBenefit(drug, 2);
     } else if (drug.name !== "Magic Pill") {
       this.decreaseBenefit(drug, 1);
     }
